@@ -1,0 +1,12 @@
+.data-container{
+    display: flex;
+    flex-direction: column;
+    height: 500px;
+    width: 400px;
+    padding: 10px;
+    background-color: #e02a32;
+    border-right: 1px solid black;
+}
+.display-main{
+    display: flex;
+}
