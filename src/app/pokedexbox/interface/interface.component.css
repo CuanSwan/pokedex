@@ -1,0 +1,28 @@
+div{
+    display: flex;
+}
+
+button{
+    background-color: #23d9f9;
+    border-style: groove;
+    border-color: #e02a32;
+    padding:10px;
+    height: 80px;
+}
+
+button:hover{
+    cursor: pointer;
+    background-color: #4ac7dd;
+}
+
+button:active{
+    transform: translate(1px, -1px);
+}
+
+.direction{
+    width:40%;
+}
+
+.ability{
+    width:20%;
+}
