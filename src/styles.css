@@ -1,1 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
+:root{
+    --screen: #78d237;
+    --textcol: #0f3c0f;
+    --inborder: #8b282d;
+}
+
+@font-face {
+    font-family: 'Pixelify';
+    src: url('app/assets/fonts/PixelifySans/PixelifySans-Regular.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+*{
+    font-family: 'Pixelify';
+}
