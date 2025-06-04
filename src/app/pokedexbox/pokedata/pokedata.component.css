@@ -9,4 +9,9 @@
 }
 .display-main{
     display: flex;
+    background-color: var(--screen);
+    border: 5px inset var(--inborder);
+    border-radius: 5px;
+    color: var(--textcol);
+    padding: 5px 10px;
 }

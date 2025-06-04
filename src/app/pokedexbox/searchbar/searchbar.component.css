@@ -1,4 +1,5 @@
-div{
+
+.main{
     background-color: #e02a32;
     height: 500px;
     width: 400px;
@@ -6,26 +7,35 @@ div{
 }
 
 .search{
-    background-color: #b3232b;
-    border-style: groove;
-    border-color: #e02a32;
+
+    background-color: var(--screen);
+    border-style: inset;
+    border-color: var(--inborder);
+    border-width: 4px;
     height: 40px;
+    color: var(--textcol);
+    font-size: larger;
     flex-grow: 4;
+    padding:0 5px;
 }
 
 .search-btn{
-    background-color: #b3232b;
-    border-style: groove;
+    background-color: #23d9f9;
+    border-style: outset;
     height: 40px;
-    border-color: #e02a32;
+    border-color: #23d9f9;
     flex-grow: 1;
     box-sizing: content-box;
-    color:#e02a32;
+    color:#29abc2;
     font-size: xx-large;
 }
 
+.search-btn:active{
+    transform: translate(1px, -1px);
+}
 
-form{
+
+.searchContainer{
     padding:0;
     display: flex;
 }

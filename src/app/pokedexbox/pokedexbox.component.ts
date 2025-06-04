@@ -12,5 +12,15 @@ import { SearchbarComponent } from './searchbar/searchbar.component';
   styleUrl: './pokedexbox.component.css'
 })
 export class PokedexboxComponent {
-
+  currentPokemon = {name:'',
+    height:0,
+    weight:0,
+    description: '',
+    imgUrl: '',
+    cryUrl: ''
+  }
+  searchPokemonName(pokemon: string | null){
+    this.currentPokemon.name = pokemon || ''
+    console.log(this.currentPokemon)
+  }
 }

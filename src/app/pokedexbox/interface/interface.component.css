@@ -1,14 +1,19 @@
 div{
     display: flex;
+    justify-content: center;
 }
 
 button{
     background-color: #23d9f9;
-    border-style: groove;
-    border-color: #e02a32;
+    border-style: outset;
+    border-color: #23d9f9;
     padding:10px;
     height: 80px;
+    width: 20%;
+    margin:0 5px;
+    border-radius: 50%;
 }
+
 
 button:hover{
     cursor: pointer;
@@ -17,12 +22,4 @@ button:hover{
 
 button:active{
     transform: translate(1px, -1px);
-}
-
-.direction{
-    width:40%;
-}
-
-.ability{
-    width:20%;
 }

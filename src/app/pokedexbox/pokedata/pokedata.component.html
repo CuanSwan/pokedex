@@ -1,12 +1,13 @@
 <div class="data-container">
     <div class="display-main">
         <div>
-            <h3>Name: </h3>
-            <h3>Height: </h3>
-            <h3>Weight: </h3>
+            <h3>Name:{{data.name}} </h3>
+            <h3>Height: {{data.height}}</h3>
+            <h3>Weight: {{data.weight}}</h3>
+            <h3>Cry:</h3>
             <audio></audio>
         </div>
     </div>
-    <app-description></app-description>  
+    <app-description [description]="data.description"></app-description>  
 </div>
 

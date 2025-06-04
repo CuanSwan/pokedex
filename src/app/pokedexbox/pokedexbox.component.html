@@ -1,4 +1,4 @@
 <div class="main-container">
-    <app-pokedata></app-pokedata>   
-    <app-searchbar></app-searchbar>
+    <app-pokedata [data]="currentPokemon"></app-pokedata>   
+    <app-searchbar (searchNameEvent)="searchPokemonName($event)"></app-searchbar>
 </div>
