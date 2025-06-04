@@ -1,8 +1,7 @@
 .imageBox{
-    border: 1px solid black;
     height: 350px;
     width: 90%;
-    background-color: #0b1126;
-    border: 5px solid #ebebeb;
-    margin:10px auto;
+    background-color: var(--screen);
+    border: 5px inset var(--inborder);
+    margin:5px auto;
 }
