@@ -4,8 +4,10 @@
             <h3>Name:{{data.name}} </h3>
             <h3>Height: {{data.height}}</h3>
             <h3>Weight: {{data.weight}}</h3>
-            <h3>Cry:</h3>
-            <audio></audio>
+            <div>
+                <h3>Cry: </h3>
+                <audio id="player" controls  volume="1" [src]="data.cryUrl" type="audio/ogg"></audio>
+            </div>
         </div>
     </div>
     <app-description [description]="data.description"></app-description>  

@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, Input } from '@angular/core';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome'
 import {faAnglesRight} from '@fortawesome/free-solid-svg-icons'
 import { InterfaceComponent } from '../interface/interface.component';
@@ -14,6 +14,8 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms'
 })
 export class SearchbarComponent {
   faArrow = faAnglesRight
+  @Input()
+  imgUrl!: Object;
   @Output() searchNameEvent = new EventEmitter<string>()
 
   pokemonNameControl = new FormControl('')

@@ -4,4 +4,12 @@
     background-color: var(--screen);
     border: 5px inset var(--inborder);
     margin:5px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.imageBox img{
+    height:90%;
+    width: 90%;
 }

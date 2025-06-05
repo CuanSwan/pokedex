@@ -3,6 +3,6 @@
         <input [formControl]="pokemonNameControl" class="search">
         <button class="search-btn" (click)="searchPokemonName()">&#8680;</button>
     </div>
-    <app-pokepic></app-pokepic>
+    <app-pokepic [imgUrl]="imgUrl"></app-pokepic>
     <app-interface class="controls"></app-interface>
 </div>
