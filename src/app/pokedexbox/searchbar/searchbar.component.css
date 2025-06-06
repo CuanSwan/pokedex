@@ -5,8 +5,10 @@
     width: 400px;
     padding:10px;
 }
-
-.search{
+form{
+    display: flex;
+}
+#search{
 
     background-color: var(--screen);
     border-style: inset;
@@ -38,4 +40,31 @@
 .searchContainer{
     padding:0;
     display: flex;
+}
+
+.results{
+    display: none;
+    margin-top: 40px;
+    background-color: var(--screen);
+    width: 400px;
+    max-height: 200px;
+    overflow-y: scroll;
+    list-style: none;
+    padding: 0;
+}
+.results li{
+    margin:0;
+    border: 2px outset var(--screen);
+    height:40px;
+    display: flex;
+    align-items: center;
+    padding:5px
+}
+.results li:hover{
+    background-color: var(--textcol);
+}
+
+#search:focus ~ .results{
+    display: block;
+    position: absolute;
 }

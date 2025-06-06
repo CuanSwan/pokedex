@@ -1,8 +1,15 @@
 <div class="main">
-    <div class="searchContainer">
-        <input [formControl]="pokemonNameControl" class="search">
-        <button class="search-btn" (click)="searchPokemonName()">&#8680;</button>
-    </div>
+        <form class="searchContainer">
+            <input [formControl]="pokemonNameControl" id="search">
+            <button class="search-btn" (click)="searchPokemonName($event)">&#8680;</button>
+            <ul class="results">
+                @for (pokemon of newList; track pokemon.name) {
+                    <li (mousedown)="setFormValue(pokemon)">{{pokemon.name[0].toUpperCase() + pokemon.name.substring(1)}}</li>
+                }@empty {
+                    <li>There are no items</li>
+                }
+            </ul>
+        </form>
     <app-pokepic [imgUrl]="imgUrl"></app-pokepic>
     <app-interface class="controls"></app-interface>
 </div>

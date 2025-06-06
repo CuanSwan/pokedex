@@ -1,4 +1,4 @@
-import { Component, Injectable, inject, } from '@angular/core';
+import { Component, Injectable, OnInit, inject, } from '@angular/core';
 import { PokedataComponent } from './pokedata/pokedata.component';
 import { PokepicComponent } from './pokepic/pokepic.component';
 import { InterfaceComponent } from './interface/interface.component';
@@ -16,18 +16,26 @@ import { forkJoin } from 'rxjs';
 
 @Injectable({providedIn: 'root'})
 
-export class PokedexboxComponent {
-
+export class PokedexboxComponent implements OnInit{
   private http = inject(HttpClient);
+
   pokeAPIData = {}
-  currentPokemon = {name:'',
+  allPokemon = []
+  currentPokemon = {name:'???',
     height:0,
     weight:0,
     description: '',
-    imgUrl: {},
-    cryUrl: ''
+    imgUrl: {front_default: 'question.png'},
+    cryUrl: '?'
   }
-  searchPokemonName(pokemon: string | null){
+
+  ngOnInit(): void {
+    this.http.get<any>('https://pokeapi.co/api/v2/pokemon?limit=100000').subscribe((pokemon)=>{
+      this.allPokemon = pokemon.results;
+      console.log(this.allPokemon)
+    })
+  }
+  searchPokemonName(pokemon: string | null): void{
     forkJoin<[any, any]>([this.http.get(`https://pokeapi.co/api/v2/pokemon/${pokemon}`), this.http.get(`https://pokeapi.co/api/v2/pokemon-species/${pokemon}`)]).subscribe(([data1, data2]) => {
       console.log(data1.name)
       console.log(data2)

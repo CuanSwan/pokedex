@@ -1,4 +1,7 @@
 <div class="main-container">
     <app-pokedata [data]="currentPokemon"></app-pokedata>   
-    <app-searchbar (searchNameEvent)="searchPokemonName($event)" [imgUrl]="currentPokemon.imgUrl"></app-searchbar>
+    <app-searchbar 
+    (searchNameEvent)="searchPokemonName($event)" 
+    [imgUrl]="currentPokemon.imgUrl"
+    [pokeList]="allPokemon"></app-searchbar>
 </div>
