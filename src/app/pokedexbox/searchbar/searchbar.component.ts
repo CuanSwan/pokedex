@@ -39,9 +39,6 @@ export class SearchbarComponent implements OnInit{
 
   setFormValue(pokemon: any){
     console.log(pokemon)
-    const inputf = document.getElementById('search')
-    if(inputf !== null){
-      
-    }
+    this.searchNameEvent.emit(pokemon.name)
   }
 }
