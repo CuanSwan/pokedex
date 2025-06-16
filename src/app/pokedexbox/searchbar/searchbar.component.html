@@ -1,6 +1,6 @@
 <div class="main">
         <form class="searchContainer">
-            <input [formControl]="pokemonNameControl" id="search">
+            <input [formControl]="pokemonNameControl" id="search" placeholder="Search...">
             <button class="search-btn" (click)="searchPokemonName($event)">&#8680;</button>
             <ul class="results">
                 @for (pokemon of newList; track pokemon.name) {
@@ -11,5 +11,5 @@
             </ul>
         </form>
     <app-pokepic [imgUrl]="imgUrl"></app-pokepic>
-    <app-interface class="controls"></app-interface>
+    <app-interface class="controls" [nextPokemon]="nextPokemon" [prevPokemon]="prevPokemon"></app-interface>
 </div>

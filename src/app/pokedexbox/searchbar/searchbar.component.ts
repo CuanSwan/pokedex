@@ -15,6 +15,10 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms'
 export class SearchbarComponent implements OnInit{
   faArrow = faAnglesRight
   @Input()
+  prevPokemon!:(() => void)
+  @Input() 
+  nextPokemon!: (() => void)
+  @Input()
   imgUrl!: Object;
   @Input()
   pokeList!: Array<any>;
