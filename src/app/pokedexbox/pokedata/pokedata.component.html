@@ -16,13 +16,13 @@
     <div class="screen">
         <button class="prevData" (click)="prev()"><fa-icon [icon]="faPlay"></fa-icon></button>
         @if (counter === 0) {
-            <app-description [description]="data.description"></app-description>
+            <app-description class="info" [description]="data.description"></app-description>
         }@else if (counter === 1) {
-            <app-pokestats></app-pokestats>
+            <app-pokestats class="info" [stats]="data.baseStats"></app-pokestats>
         }@else if (counter === 2) {
-            <app-pokeabilities></app-pokeabilities>
+            <app-pokeabilities class="info"></app-pokeabilities>
         }@else if (counter === 3) {
-            <app-pokemoves></app-pokemoves>
+            <app-pokemoves class="info"></app-pokemoves>
         }
         <button class="nextData" (click)="next()"><fa-icon [icon]="faPlay"></fa-icon></button>  
     </div>

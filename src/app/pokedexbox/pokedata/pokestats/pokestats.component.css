@@ -1,0 +1,44 @@
+.stats{
+    list-style: none;
+    height: 100%;
+    text-align: left;
+    padding:10px;
+    margin: 0;
+}
+
+.stats p{
+    width: 70px;
+    height:20px;
+    padding: 2px;
+    margin:2px;
+    display: inline;
+}
+
+.infoContainer{
+    padding:0;
+}
+
+li{
+    display: flex;
+    margin:2px;
+}
+
+.outer{
+    flex-grow: 1;
+    background-color: var(--screenhover);
+    padding:2px;
+}
+
+h3{
+    margin:5px;
+}
+
+.inner{
+    height: 100%;
+    background-color: var(--textcol);
+    color: var(--screen);
+    box-sizing: border-box;
+    padding:2px;
+}
+
+
