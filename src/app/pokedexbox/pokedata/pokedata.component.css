@@ -1,3 +1,4 @@
+
 .data-container{
     display: flex;
     flex-direction: column;
@@ -49,7 +50,8 @@
     background-color: var(--screen);
     border: 5px inset var(--inborder);
     border-radius: 5px;
-    height: 200px;
+    min-height: 200px;
+    box-sizing: border-box;
     margin:10px 0 0 0;
     font-size:20px;
     color: var(--textcol);

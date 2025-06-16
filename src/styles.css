@@ -24,3 +24,7 @@
     margin: 0 auto;
     padding: 0 10px;
 }
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}

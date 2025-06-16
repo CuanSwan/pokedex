@@ -8,3 +8,7 @@
         flex-direction: column;
     }
 }
+
+app-pokedata{
+    max-height: 200px;
+}
