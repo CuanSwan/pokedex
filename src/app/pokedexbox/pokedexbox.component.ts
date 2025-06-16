@@ -18,14 +18,20 @@ export class PokedexboxComponent implements OnInit{
   private http = inject(HttpClient);
   pokeAPIData = {}
   allPokemon = []
-  currentPokemon = {name:'???',
+  currentPokemon = {
+    //Add Movesets
+    //Add background
+    name:'???',
     id: 0,
     height:0.0,
     weight:0.0,
     description: '???',
-    baseStats:[],
     imgUrl: {front_default: 'question.png'},
-    cryUrl: '???'
+    cryUrl: '???',
+    baseStats:[], // to be implemented. Add styling for bar like display. conditional based on 1 to 255 percentage
+    types: [], // to be implemented. Add .svg icons depending on types gotten from API
+    moves: [], // to be implemented. 
+    abilities: []
   }
   currentIndex: number = 0;
 
@@ -47,7 +53,7 @@ export class PokedexboxComponent implements OnInit{
   }
 
   searchPokemonName(pokemon: string | null): void{
-    forkJoin<[any, any]>([this.http.get(`https://pokeapi.co/api/v2/pokemon/${pokemon}`), this.http.get(`https://pokeapi.co/api/v2/pokemon-species/${pokemon}`)]).subscribe(([data1, data2]) => {
+    forkJoin<[any, any]>([this.http.get(`https://pokeapi.co/api/v2/pokemon/${pokemon}`), this.http.get(`https://pokeapi.co/api/v2/pokemon-species/${pokemon}`)]).subscribe({next: ([data1, data2]) => {
         this.currentPokemon = {
           name: data1.name,
           id: data1.id,
@@ -56,10 +62,29 @@ export class PokedexboxComponent implements OnInit{
           description: data2.flavor_text_entries.filter((entry: { language: any; }) => entry.language.name === 'en')[0].flavor_text,
           imgUrl:data1.sprites,
           cryUrl: data1.cries.latest,
-          baseStats: data1.stats
-        }
+          baseStats: data1.stats,
+          types: data1.types,
+          moves: data1.moves,
+          abilities: data1.abilities,
+        },
       this.currentIndex = data1.id-1
-      })
-      console.log(this.currentPokemon.baseStats)
+    },
+    error: (err) => {
+      console.error(err)
+      this.currentPokemon = {
+            name:'???',
+            id: 0,
+            height:0.0,
+            weight:0.0,
+            description: '???',
+            baseStats:[], // to be implemented. Add styling for bar like display. conditional based on 1 to 255 percentage
+            imgUrl: {front_default: 'question.png'},
+            cryUrl: '???',
+            types: [],
+            moves: [],
+            abilities: [],
+        } 
+    }})
+    console.log(this.currentPokemon.baseStats)
   }
 }

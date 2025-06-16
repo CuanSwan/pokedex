@@ -19,9 +19,8 @@
     font-family: 'Pixelify';
 }
 
+
 .infoContainer{
-    min-width: 80%;
     margin: 0 auto;
-    overflow-y: auto;
-    padding: 5px;
+    padding: 0 10px;
 }

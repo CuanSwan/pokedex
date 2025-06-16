@@ -1,4 +1,41 @@
 <div class="infoContainer">
     <h3>Stats: </h3>
-    <p></p>
+    <ul class="stats">
+        <li>
+            <p>HP: </p>
+            <div class="outer">
+                <div [style.width.%]="(stats[0].base_stat / 255) * 100" class="inner">{{stats[0].base_stat}}</div>
+            </div>
+        </li>
+        <li>
+            <p>ATK: </p>
+            <div class="outer">
+                <div [style.width.%]="(stats[1].base_stat / 255) * 100" class="inner">{{stats[1].base_stat}}</div>
+            </div>
+        </li>
+        <li>
+            <p>DEF: </p>
+            <div class="outer">
+                <div [style.width.%]="(stats[2].base_stat / 255) * 100" class="inner">{{stats[2].base_stat}}</div>
+            </div>
+        </li>
+        <li>
+            <p>SP ATK: </p>
+            <div class="outer">
+                <div [style.width.%]="(stats[3].base_stat / 255) * 100" class="inner">{{stats[3].base_stat}}</div>
+            </div>
+        </li>
+        <li>
+            <p>SP DEF: </p>
+            <div class="outer">
+                <div [style.width.%]="(stats[4].base_stat / 255) * 100" class="inner">{{stats[4].base_stat}}</div>
+            </div>
+        </li>
+        <li>
+            <p>SPEED: </p>
+            <div class="outer">
+                <div [style.width.%]="(stats[5].base_stat / 255) * 100" class="inner">{{stats[5].base_stat}}</div>
+            </div>
+        </li>
+    </ul>
 </div>

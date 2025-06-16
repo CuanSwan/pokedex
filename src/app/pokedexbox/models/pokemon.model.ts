@@ -1,6 +1,7 @@
 export interface Pokemon{
     //name of the pokemon from PokeAPI
     name: string;
+    id: number;
     //height of the pokemon from PokeAPI
     height: number;
     //weight of the pokemon from PokeAPI
@@ -11,4 +12,9 @@ export interface Pokemon{
     imgUrl: Object;
     //URL to the audio for the pokemons cry
     cryUrl: string;
+    baseStats: Array<any>;
+    types: Array<any>;
+    abilities: Array<any>;
+    moves: Array<any>;
+
 }
