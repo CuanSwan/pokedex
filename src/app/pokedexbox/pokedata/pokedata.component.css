@@ -14,4 +14,64 @@
     border-radius: 5px;
     color: var(--textcol);
     padding: 5px 10px;
+    height: 300px;
+}
+
+.audio-container{
+    display: flex;
+    height: 40px;
+    align-items: center;
+}
+.audio-container h3{
+    display: flex;
+    padding: 5px;
+    box-sizing: content-box;
+    min-height: 25px;
+}
+.audio-container button{
+    padding: 5px;
+    color: var(--textcol);
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 25px;
+    min-height: 25px;
+    box-sizing: content-box;
+    border: none;
+}
+
+.audio-container button:hover{
+    color: var(--texthover);
+}
+
+.screen{
+    background-color: var(--screen);
+    border: 5px inset var(--inborder);
+    border-radius: 5px;
+    height: 200px;
+    margin:10px 0 0 0;
+    font-size:20px;
+    color: var(--textcol);
+    text-align:center;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-width: 80%;
+}
+
+.prevData{
+    transform: rotate(180deg);
+}
+
+button{
+    height: 100%;
+    background-color: transparent;
+    border: none;
+    color: var(--textcol)
+}
+
+button:hover{
+    background-color:var(--screenhover);
+    color:var(--texthover);
 }

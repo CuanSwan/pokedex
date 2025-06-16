@@ -3,6 +3,8 @@
     --screen: #78d237;
     --textcol: #0f3c0f;
     --inborder: #8b282d;
+    --texthover: #175f17;
+    --screenhover: #5b9e2b;
 }
 
 @font-face {
@@ -15,4 +17,11 @@
 
 *{
     font-family: 'Pixelify';
+}
+
+.infoContainer{
+    min-width: 80%;
+    margin: 0 auto;
+    overflow-y: auto;
+    padding: 5px;
 }
