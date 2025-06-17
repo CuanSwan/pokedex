@@ -4,9 +4,8 @@ h3{
 
 .infoFlex > h3{
     display: flex;
-    margin: 5px 0;
-    height: 40px;
     align-items: center;
+    flex-grow:1;
 }
 
 .data-container{
@@ -30,9 +29,8 @@ h3{
 
 .audio-container{
     display: flex;
-    height: 40px;
     align-items: center;
-    margin:5px 0;
+    flex-grow: 1;
 }
 
 .audio-container button{
@@ -112,11 +110,10 @@ img{
 
 .type{
     display: flex;
-    margin:5px 0;
     padding: 0;
-    height: 40px;
     align-items: center;
-}
+    flex-grow: 1;
+ }
 
 .infoFlex{
     display: flex;
