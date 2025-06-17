@@ -63,7 +63,7 @@ export class PokedexboxComponent implements OnInit{
           imgUrl:data1.sprites,
           cryUrl: data1.cries.latest,
           baseStats: data1.stats,
-          types: data1.types,
+          types: data1.types.map((type: any) => {return type.type.name}),
           moves: data1.moves,
           abilities: data1.abilities,
         },

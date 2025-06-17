@@ -19,7 +19,6 @@ export class PokedataComponent{
   @Input()
   data!: Pokemon;
   counter = 0;
-
   faPlay = faPlay
   faPause = faPause
   ngAfterViewInit(): void{

@@ -1,16 +1,21 @@
 <div class="data-container">
     <div class="display-main">
-        <div>
+        <div class="infoFlex">
             <h3>Name: {{data.name[0].toUpperCase() + data.name.substring(1)}} </h3>
             <h3>Height: {{data.height}} m</h3>
             <h3>Weight: {{data.weight}} kg</h3>
-            <h3>Type: </h3>
-                <div class="audio-container">
-                    <h3>Cry: </h3>
-                    <audio id="player" #audioRef  volume="1" [src]="data.cryUrl" type="audio/ogg"></audio>
-                    <button (click)="play()"><fa-icon [icon]="faPlay"></fa-icon></button>
-                    <button (click)="pause()"><fa-icon [icon]="faPause"></fa-icon></button>
-                </div>
+            <div class="type">
+                <h3>Type: </h3>
+                @for(type of data.types; track type){
+                    <img src="icons/{{type}}.svg">
+                }
+            </div>
+            <div class="audio-container">
+                <h3>Cry: </h3>
+                <audio id="player" #audioRef  volume="1" [src]="data.cryUrl" type="audio/ogg"></audio>
+                <button (click)="play()"><fa-icon [icon]="faPlay"></fa-icon></button>
+                <button (click)="pause()"><fa-icon [icon]="faPause"></fa-icon></button>
+            </div>
             </div>
     </div>
     <div class="screen">
