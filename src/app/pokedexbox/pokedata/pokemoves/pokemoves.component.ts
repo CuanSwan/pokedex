@@ -2,12 +2,12 @@ import { Component, Input } from '@angular/core';
 import { LoadingService } from '../../../services/loading.service';
 import { inject } from '@angular/core';
 import { NgIf, CommonModule } from '@angular/common';
-import { Pokemon } from '../../models/pokemon.model';
+import { MoveComponent } from "./move/move.component";
 
 @Component({
   selector: 'app-pokemoves',
   standalone: true,
-  imports: [NgIf, CommonModule],
+  imports: [NgIf, CommonModule, MoveComponent],
   templateUrl: './pokemoves.component.html',
   styleUrl: './pokemoves.component.css'
 })

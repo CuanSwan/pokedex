@@ -1,12 +1,11 @@
 
 <div class="infoContainer">
-    <h3>Move List:</h3>
-    <div *ngIf="loadingService.loading$ | async">
-        Loading Moves....
+    <div *ngIf="loadingService.loading$ | async" class="spinner">
     </div>
-    <div style="max-height:200px" *ngIf="!(loadingService.loading$ | async)">
+    <div *ngIf="!(loadingService.loading$ | async)">
+        <h3>Moves:</h3>
         @for(move of moves; track move.name){
-            <p>{{move.name}}</p>
+            <app-move [move]="move"></app-move>
         }
     </div>
 </div>
