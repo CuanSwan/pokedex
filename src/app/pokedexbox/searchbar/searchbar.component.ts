@@ -30,9 +30,7 @@ export class SearchbarComponent implements OnInit{
   ngOnInit(): void{
     this.newList =this.pokeList    
     this.pokemonNameControl.valueChanges.subscribe(value => {
-      console.log(value)
       this.newList = (this.pokeList.filter(p => p.name.includes(value)))
-      console.log(this.newList)
     })
   }
 
@@ -42,7 +40,6 @@ export class SearchbarComponent implements OnInit{
   }
 
   setFormValue(pokemon: any){
-    console.log(pokemon)
-    this.searchNameEvent.emit(pokemon.name)
+    this.pokemonNameControl.setValue(pokemon.name)
   }
 }

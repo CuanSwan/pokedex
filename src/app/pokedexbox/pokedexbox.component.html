@@ -1,7 +1,7 @@
 <div class="main-container">
     <app-pokedata [data]="currentPokemon"></app-pokedata>   
     <app-searchbar 
-    (searchNameEvent)="searchPokemonName($event)" 
+    (searchNameEvent)="searchTrigger$.next($event)" 
     [imgUrl]="currentPokemon.imgUrl"
     [pokeList]="allPokemon"
     [nextPokemon]="nextPokemon"

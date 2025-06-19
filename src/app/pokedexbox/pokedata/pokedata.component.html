@@ -27,7 +27,7 @@
         }@else if (counter === 2) {
             <app-pokeabilities class="info"></app-pokeabilities>
         }@else if (counter === 3) {
-            <app-pokemoves class="info"></app-pokemoves>
+            <app-pokemoves class="info" [moves]="data.moves"></app-pokemoves>
         }
         <button class="nextData" (click)="next()"><fa-icon [icon]="faPlay"></fa-icon></button>  
     </div>
