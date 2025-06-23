@@ -7,11 +7,12 @@ import { PokestatsComponent } from './pokestats/pokestats.component';
 import { faPlay, faPause } from '@fortawesome/free-solid-svg-icons';
 import { Pokemon } from '../models/pokemon.model';
 import { ImgloadingService } from '../../services/imgloading.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-pokedata',
   standalone: true,
-  imports: [DescriptionComponent, FontAwesomeModule, PokeabilitiesComponent, PokemovesComponent, PokestatsComponent],
+  imports: [CommonModule, DescriptionComponent, FontAwesomeModule, PokeabilitiesComponent, PokemovesComponent, PokestatsComponent],
   templateUrl: './pokedata.component.html',
   styleUrl: './pokedata.component.css'
 })

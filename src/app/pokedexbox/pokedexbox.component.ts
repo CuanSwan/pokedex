@@ -2,9 +2,10 @@ import { Component, Injectable, OnInit, inject, } from '@angular/core';
 import { PokedataComponent } from './pokedata/pokedata.component';
 import { SearchbarComponent } from './searchbar/searchbar.component';
 import { HttpClient } from '@angular/common/http';
-import { forkJoin, pipe,from,concatMap, delay, Subject, debounce, switchMap, debounceTime, catchError, of, tap, Subscription, filter } from 'rxjs';
+import { forkJoin, pipe,from,concatMap, delay, Subject, debounce, switchMap, debounceTime, catchError, of, tap, Subscription, filter, map } from 'rxjs';
 import { LoadingService } from '../services/loading.service';
 import { ImgloadingService } from '../services/imgloading.service';
+import { AbilLoadingService } from '../services/abil-loading.service';
 
 @Component({
   selector: 'app-pokedexbox',
@@ -18,6 +19,7 @@ export class PokedexboxComponent implements OnInit{
   private http = inject(HttpClient);
   loadingService = inject(LoadingService);
   imgService = inject(ImgloadingService)
+  abilService = inject(AbilLoadingService)
   searchTrigger$ = new Subject<string>(); 
   private moveSub:Subscription = new Subscription();
   allPokemon = [];
@@ -35,6 +37,7 @@ export class PokedexboxComponent implements OnInit{
     types: [], 
     moveNames: [], // to be implemented. add component for rendering details of move 
     moves: [{}],
+    abilityUrls: [],
     abilities: [] // to be implemented. add component for ability details
   }
   currentIndex: number = 0;
@@ -74,6 +77,7 @@ export class PokedexboxComponent implements OnInit{
       tap(()=>{
         this.loadingService.setLoading(true)
         this.imgService.setLoading(true)
+        this.abilService.setLoading(true)
       }),
       debounceTime(300),
       switchMap((pokemon)=>
@@ -87,7 +91,7 @@ export class PokedexboxComponent implements OnInit{
                   return of(null)
                 })
              )
-        ) 
+            ) 
     ).subscribe((data) => {
         if(!data) return;
         if(this.moveSub){
@@ -106,12 +110,34 @@ export class PokedexboxComponent implements OnInit{
           types: data1.types.map((type: any) => {return type.type.name}),
           moveNames: data1.moves.map((m: any) => m.move.url),
           moves: [],
-          abilities: data1.abilities,
+          abilityUrls: data1.abilities.map((ability: any)=>({
+            url:ability.ability.url,
+            is_hidden: ability.is_hidden
+          })),
+          abilities: []
         }
+        forkJoin(this.currentPokemon.abilityUrls.map(abObj => {
+          const {url, is_hidden} = abObj
+          return this.http.get(url).pipe(
+            map((abData: any)=> ({
+                ...abData,
+                is_hidden
+            }))
+        )}
+      )).pipe(
+            catchError((err) => {
+              console.error()
+              this.setFallbackPokemon()
+              return of([])
+            })
+          ).subscribe((abilityDetails: any)=> {
+            this.currentPokemon.abilities = abilityDetails
+            this.abilService.setLoading(false)
+        })
+        this.imgService.setLoading(false)
         this.currentIndex = data1.id-1
         const moveUrls = this.chunkArray(this.currentPokemon.moveNames, 5)
         this.currentPokemon.moves = []
-        this.imgService.setLoading(false)
         this.moveSub = from(moveUrls).pipe(
             concatMap((batch: string[])=>{
               return forkJoin(batch.map((url)=> this.http.get(url))).pipe(delay(500))
@@ -146,6 +172,7 @@ export class PokedexboxComponent implements OnInit{
     types: [], 
     moveNames: [], 
     moves: [],
+    abilityUrls: [],
     abilities: [] // to be implemented. add component for ability details
   } 
   }

@@ -1,0 +1,23 @@
+.hidden{
+    display: none;
+    background-color: var(--screenhover);
+    color: var(--screen);
+    padding: 4px;
+    margin:0;
+    border-bottom:1px solid var(--screen)
+}
+.title{
+    min-width: 100%;
+    padding: 0 5px;
+}
+.descriptor{
+    display: block;
+}
+.details{
+    max-width: 100%;
+}
+.abilityContainer{
+    border: 1px solid var(--screenhover);
+    text-align:left;
+    min-width: 100%;
+}
