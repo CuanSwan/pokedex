@@ -121,3 +121,20 @@ img{
     justify-content: space-between;
     height: 100%;
 }
+
+.loader::after{
+    content:".";
+    animation: dots 1.2s steps(3, end) infinite;
+}
+
+@keyframes dots {
+    0%{
+        content: ".";
+    }
+    33% {
+        content: "..";
+    }
+    66% {
+        content: "...";
+    }
+}

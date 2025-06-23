@@ -2,8 +2,9 @@ import { Component, Injectable, OnInit, inject, } from '@angular/core';
 import { PokedataComponent } from './pokedata/pokedata.component';
 import { SearchbarComponent } from './searchbar/searchbar.component';
 import { HttpClient } from '@angular/common/http';
-import { forkJoin, pipe,from,concatMap, delay, Subject, debounce, switchMap, debounceTime, catchError, of, tap, Subscription } from 'rxjs';
+import { forkJoin, pipe,from,concatMap, delay, Subject, debounce, switchMap, debounceTime, catchError, of, tap, Subscription, filter } from 'rxjs';
 import { LoadingService } from '../services/loading.service';
+import { ImgloadingService } from '../services/imgloading.service';
 
 @Component({
   selector: 'app-pokedexbox',
@@ -16,6 +17,7 @@ import { LoadingService } from '../services/loading.service';
 export class PokedexboxComponent implements OnInit{
   private http = inject(HttpClient);
   loadingService = inject(LoadingService);
+  imgService = inject(ImgloadingService)
   searchTrigger$ = new Subject<string>(); 
   private moveSub:Subscription = new Subscription();
   allPokemon = [];
@@ -27,7 +29,7 @@ export class PokedexboxComponent implements OnInit{
     height:0.0,
     weight:0.0,
     description: '???',
-    imgUrl: {front_default: 'question.png'},
+    imgUrl: [["",<unknown>""]],
     cryUrl: '???',
     baseStats:[],
     types: [], 
@@ -61,11 +63,17 @@ export class PokedexboxComponent implements OnInit{
     return chunks;
   }
 
+  removeEntries(sprites: any){
+    const {other, versions, ...rest} = sprites
+    const filtered = Object.entries(rest).filter(([_, value]) => value !== null)
+    return filtered
+  }
+
   setupSearchTrigger(): void{
     this.searchTrigger$.pipe(
       tap(()=>{
         this.loadingService.setLoading(true)
-        this.loadingService.loading$.subscribe((value) => console.log(value))
+        this.imgService.setLoading(true)
       }),
       debounceTime(300),
       switchMap((pokemon)=>
@@ -92,18 +100,18 @@ export class PokedexboxComponent implements OnInit{
           height: data1.height /10,
           weight: data1.weight /10,
           description: data2.flavor_text_entries.filter((entry: { language: any; }) => entry.language.name === 'en')[0].flavor_text,
-          imgUrl:data1.sprites,
+          imgUrl:this.removeEntries(data1.sprites),
           cryUrl: data1.cries.latest,
           baseStats: data1.stats,
           types: data1.types.map((type: any) => {return type.type.name}),
           moveNames: data1.moves.map((m: any) => m.move.url),
           moves: [],
           abilities: data1.abilities,
-        } 
+        }
         this.currentIndex = data1.id-1
         const moveUrls = this.chunkArray(this.currentPokemon.moveNames, 5)
         this.currentPokemon.moves = []
-
+        this.imgService.setLoading(false)
         this.moveSub = from(moveUrls).pipe(
             concatMap((batch: string[])=>{
               return forkJoin(batch.map((url)=> this.http.get(url))).pipe(delay(500))
@@ -119,7 +127,6 @@ export class PokedexboxComponent implements OnInit{
           complete: () => {
             console.log('Complete all batches')
             this.loadingService.setLoading(false)
-            console.log(this.currentPokemon.moves)
           }
         })
     })
@@ -127,18 +134,17 @@ export class PokedexboxComponent implements OnInit{
 
   setFallbackPokemon(){
    this.currentPokemon =  {
-    //Add Movesets
     //Add background
     name:'???',
     id: 0,
     height:0.0,
     weight:0.0,
     description: '???',
-    imgUrl: {front_default: 'question.png'},
+    imgUrl: [['front_default', 'question.png']],
     cryUrl: '???',
     baseStats:[],
     types: [], 
-    moveNames: [], // to be implemented. add component for rendering details of move 
+    moveNames: [], 
     moves: [],
     abilities: [] // to be implemented. add component for ability details
   } 

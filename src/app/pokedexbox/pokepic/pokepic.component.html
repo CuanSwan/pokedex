@@ -1,3 +1,9 @@
-<div class="imageBox" height="200px" width="200px">
-    <img [src]="imgUrl.front_default">
+<div class="imageBox">
+    <button class="prevData" (click)="prev()"><fa-icon [icon]="faPlay"></fa-icon></button>
+    <div class="img" *ngIf="!(loadingService.loading$ | async)">
+        <p>{{imgUrl[currentIndex][0].replaceAll('_', ' ')| titlecase}}</p>
+        <img  [src]="imgUrl[currentIndex][1]">
+    </div>
+    <div class="spinner" *ngIf="loadingService.loading$ | async"></div>
+    <button (click)="next()"><fa-icon [icon]="faPlay"></fa-icon></button>
 </div>

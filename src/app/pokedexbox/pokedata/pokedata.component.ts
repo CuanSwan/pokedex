@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, ViewChild } from '@angular/core';
+import { Component, ElementRef, inject, Input, ViewChild } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { DescriptionComponent } from './description/description.component';
 import { PokeabilitiesComponent } from './pokeabilities/pokeabilities.component';
@@ -6,6 +6,7 @@ import { PokemovesComponent } from './pokemoves/pokemoves.component';
 import { PokestatsComponent } from './pokestats/pokestats.component';
 import { faPlay, faPause } from '@fortawesome/free-solid-svg-icons';
 import { Pokemon } from '../models/pokemon.model';
+import { ImgloadingService } from '../../services/imgloading.service';
 
 @Component({
   selector: 'app-pokedata',
@@ -15,7 +16,10 @@ import { Pokemon } from '../models/pokemon.model';
   styleUrl: './pokedata.component.css'
 })
 export class PokedataComponent{
+
   @ViewChild('audioRef') audioEle!: ElementRef<HTMLAudioElement>
+  imgLoadingService = inject(ImgloadingService)
+
   @Input()
   data!: Pokemon;
   counter = 0;
