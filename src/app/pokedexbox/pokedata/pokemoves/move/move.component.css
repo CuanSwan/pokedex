@@ -109,3 +109,19 @@ hr{
     background-color: #D685AD;
     border-color: #D685AD;
 }
+
+.hidden{
+    display:none;
+    max-width: 100%;
+    line-height: 10px;
+    margin: 0;
+    padding:0;
+}
+
+.descriptor{
+    display: block;
+    max-width: 100%;
+    margin: 0;
+    padding:0;
+}
+

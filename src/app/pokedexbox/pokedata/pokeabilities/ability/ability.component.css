@@ -2,22 +2,25 @@
     display: none;
     background-color: var(--screenhover);
     color: var(--screen);
-    padding: 4px;
+    padding: 5px;
     margin:0;
-    border-bottom:1px solid var(--screen)
-}
-.title{
-    min-width: 100%;
-    padding: 0 5px;
 }
 .descriptor{
     display: block;
 }
-.details{
-    max-width: 100%;
+
+.desc{
+    border-bottom: 2px solid var(--screen)
 }
+
 .abilityContainer{
-    border: 1px solid var(--screenhover);
+    border: 2px outset var(--screenhover);
     text-align:left;
-    min-width: 100%;
+    margin:0 auto;
+    font-size: 1rem;
+    margin: 1px 0;
+}
+
+.title{
+    padding: 0 5px;
 }

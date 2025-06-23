@@ -1,10 +1,10 @@
 <div class="abilityContainer"(click)="expand()">
     <div class="title">
-        <p>Name: {{ability.name}}</p>
-        <p>Hidden: {{ability.is_hidden}}</p>
+        <p>Name: {{ability.name | titlecase}}</p>
+        <p *ngIf="ability.is_hidden">Hidden</p>
     </div>
     <div class="details">
-        <p class="hidden" [class.descriptor]="descriptor">Description: {{findEnglish(ability.flavor_text_entries).flavor_text}}</p>
+        <p class="hidden desc" [class.descriptor]="descriptor">Description: {{findEnglish(ability.flavor_text_entries).flavor_text}}</p>
         <p class="hidden" [class.descriptor]="descriptor">Effect: {{findEnglish(ability.effect_entries).effect}}</p>
     </div>
 </div>

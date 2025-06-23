@@ -1,8 +1,8 @@
 <div class="infoContainer">
-    <h3>Abilities List:</h3>
+    <h3>Abilities:</h3>
     <div class="spinner" *ngIf="abilLoadingService.loading$ | async">
     </div>
-    <div *ngIf="!(abilLoadingService.loading$ | async)">
+    <div class="abilityContainer" *ngIf="!(abilLoadingService.loading$ | async)">
         @for(ability of abilities; track ability){
             <app-ability [ability]="ability"></app-ability>
         }

@@ -10,4 +10,9 @@ import { CommonModule, TitleCasePipe } from '@angular/common';
 })
 export class MoveComponent {
   @Input() move!: any;
+  descriptors = false;
+
+  expand(){
+    this.descriptors = !this.descriptors;
+  }
 }

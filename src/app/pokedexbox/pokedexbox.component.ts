@@ -35,10 +35,10 @@ export class PokedexboxComponent implements OnInit{
     cryUrl: '???',
     baseStats:[],
     types: [], 
-    moveNames: [], // to be implemented. add component for rendering details of move 
+    moveNames: [], 
     moves: [{}],
     abilityUrls: [],
-    abilities: [] // to be implemented. add component for ability details
+    abilities: [] 
   }
   currentIndex: number = 0;
 
